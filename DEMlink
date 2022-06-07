@@ -1,3 +1,0 @@
-DEM_ask=input("Entrez le nom de votre raster d'élévation en entrée et appuyez sur ENTREE : \n")
-DEM_name = "{0}".format(DEM_ask)
-DEM_path = r'{0}\{1}'.format(inputgdb_path,DEM_name)
