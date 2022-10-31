@@ -1,0 +1,16 @@
+html,
+body,
+
+h1 {
+    font-weight: 100;
+    margin-bottom: 0;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+    color : rgb(250, 250, 250);
+    position: absolute;
+    z-index: 9;
+}
+
+#titre {
+    margin-left: 20px
+    
+}
