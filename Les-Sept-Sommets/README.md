@@ -4,4 +4,6 @@ Les [Sept Sommets](https://japalenos.github.io/JS-API/) sont un challenge mythiq
 
 ![screenshot](./images/Screenshot.PNG)
 
+L'application a été réalisée avec l'[API JavaScript d'ArcGIS](https://developers.arcgis.com/javascript/latest/).
+
 **Inspiration**: Cette application est une version simplifiée des [Five Deeps](https://geoxc-apps4.bd.esri.com/five-deeps/) (les cinq profondeurs) réalisée par [Raluca Nicola](https://github.com/RalucaNicola)
