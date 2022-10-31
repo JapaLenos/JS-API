@@ -30,6 +30,47 @@
         require(["esri/config", "esri/Map", "esri/views/SceneView", "esri/layers/ElevationLayer", "esri/layers/MediaLayer", "esri/layers/GraphicsLayer", "esri/Ground", "esri/layers/support/ImageElement", "esri/layers/support/ExtentAndRotationGeoreference", "esri/geometry/Extent","esri/Basemap", "esri/layers/TileLayer", "esri/core/reactiveUtils", "esri/Graphic","esri/layers/FeatureLayer", "esri/popup/content/AttachmentsContent", "esri/popup/content/TextContent", "esri/renderers/SimpleRenderer", "esri/symbols/IconSymbol3DLayer", "esri/symbols/PointSymbol3D", "esri/layers/support/LabelClass", "esri/symbols/LabelSymbol3D", "esri/symbols/TextSymbol3DLayer"], 
 
         function(esriConfig, Map, SceneView, ElevationLayer, MediaLayer, GraphicsLayer, Ground, ImageElement, ExtentAndRotationGeoreference, Extent, Basemap, TileLayer, reactiveUtils, Graphic, FeatureLayer, AttachmentsContent, TextContent, SimpleRenderer,IconSymbol3DLayer, PointSymbol3D,LabelClass,LabelSymbol3D, TextSymbol3DLayer){
+            
+            
+    ///////////////////////////////////CARTE ET VUE
+            
+    //création de la carte "map"    
+    const map = new Map({ 
+        basemap : new Basemap({ //création de la basemap pour la carte "map"
+            baseLayers: [
+                new TileLayer({
+                    url:"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer", 
+                    opacity: 0.7
+                }),
+                new TileLayer({
+                    url: "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/GEBCO_basemap_NCEI/MapServer",
+                    blendMode: "multiply"
+                }),
+            ]
+        }),
+        qualityProfile: "high"
+    });
+    
+    //création de la vue 3D (scene)
+    const view = new SceneView({ 
+        container: "viewDiv", // référence à la balise qui contiendra la vue
+        map: map, //appel de la carte "map" à l'intérieur de la vue
+        scale: 50000000, // initialisation de la vue à l'échelle 1:50,000,000
+        center: [40, 21.78], //lon, lat du point central de la vue initiale
+        popup: { //préconfiguration des popups pour qu'elles soient ancrées en bas à droites
+            defaultPopupTemplateEnabled: false,
+            dockEnabled: true,
+            dockOptions: {
+              buttonEnabled: false,
+              breakpoint: false,
+              position : "bottom-right"
+            }
+          },
+        highlightOptions: {
+            haloOpacity: 0,
+            fillOpacity: 0
+        }
+    });
         
                 
     ///////////////////////////////////COUCHES
@@ -38,6 +79,7 @@
     const elevLyr = new ElevationLayer({ 
     url: "https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/GEBCO_2021_3pt5x/ImageServer" 
     });
+    map.ground.layers.add(elevLyr); //ajout de la couche d'élévation à la carte
     
     //création d'un Media Layer (disponible depuis v4.24) pour contenir les nuages        
     const cloudsLayer = new MediaLayer({ 
@@ -57,6 +99,7 @@
             })
         })],
     });
+    map.add(cloudsLayer); //ajout des nuages
             
     //configuration des Popups pour la couche de sommets
 
@@ -113,53 +156,7 @@
             })
         ]
     });
-
-    ///////////////////////////////////CARTE ET VUE
-            
-    //création de la carte "map"    
-    const map = new Map({ 
-        basemap : new Basemap({ //création de la basemap pour la carte "map"
-            baseLayers: [
-                new TileLayer({
-                    url:"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer", 
-                    opacity: 0.7
-                }),
-                new TileLayer({
-                    url: "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/GEBCO_basemap_NCEI/MapServer",
-                    blendMode: "multiply"
-                }),
-            ]
-        }),
-        qualityProfile: "high"
-    });
-    map.ground.layers.add(elevLyr); //ajout de la couche d'élévation à la carte
-    map.add(cloudsLayer); //ajout des nuages
-    map.add(sommets); //ajout de la couche de sommets à la carte
-
-
-    
-    //création de la vue 3D (scene)
-    const view = new SceneView({ 
-        container: "viewDiv", // référence à la balise qui contiendra la vue
-        map: map, //appel de la carte "map" à l'intérieur de la vue
-        scale: 50000000, // initialisation de la vue à l'échelle 1:50,000,000
-        center: [40, 21.78], //lon, lat du point central de la vue initiale
-        popup: {
-            defaultPopupTemplateEnabled: false,
-            dockEnabled: true,
-            dockOptions: {
-              buttonEnabled: false,
-              breakpoint: false,
-              position : "bottom-right"
-            }
-          },
-        highlightOptions: {
-            haloOpacity: 0,
-            fillOpacity: 0
-        }
-    });
-            
-            
+    map.add(sommets); //ajout de la couche de sommets à la carte            
             
     ///////////////////////////////////FONCTIONS COSMETIQUES
     
