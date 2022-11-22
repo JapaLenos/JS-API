@@ -8,4 +8,4 @@ L'application a été réalisée avec l'[API JavaScript d'ArcGIS](https://develo
 
 **Inspiration**: Cette application est une version simplifiée des [Five Deeps](https://geoxc-apps4.bd.esri.com/five-deeps/) (les cinq profondeurs) réalisée par [Raluca Nicola](https://github.com/RalucaNicola)
 
-[article à venir sur Code the Map à propos de cette application]
+Vous pouvez retrouver l'[article CodeTheMap](https://www.codethemap.fr/2022/11/un-mardi-une-appli-21-les-sept-sommets.html) pour comprendre comment cette application a été construite.
