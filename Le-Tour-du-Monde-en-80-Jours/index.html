@@ -35,7 +35,7 @@
       function(esriConfig, SceneView, WebScene, FeatureLayer, reactiveUtils, Graphic, Point, Mesh, TextContent,Query,AttachmentsContent) {
         
         
-        ///////////////////////////////////////////////////////////////////SCENE WEB///////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////SCENE WEB////////////////////////////////////////////////////////////////////////////
         const scene = new WebScene({
           portalItem: { 
             id: "d3b84f82ac5e410b8c6f02f5f4d37248" // ID de la scène web sur arcgis.com
@@ -74,7 +74,7 @@
         
         
         
-        ///////////////////////////////////////////////////////////////////VUE///////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////VUE/////////////////////////////////////////////////////////////////////////////
         const view = new SceneView({
           map: scene, //scène web référencée plus tôt
           alphaCompositingEnabled: true,
@@ -112,7 +112,7 @@
         
         
         
-        ///////////////////////////////////////////////////////////////////COUCHES///////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////COUCHES//////////////////////////////////////////////////////////////////////////
         scene.when(() => {
             
         ///////////////////////////////////////////////////////////////////ROUTES
@@ -150,6 +150,7 @@
           textElementRoutes.text = "L'<b>étape {OBJECTID}</b> a duré <b>{Duree}</b> jours. Les héros sont partis de <b>{Depart}</b> pour arriver à <b>{Arrivee}</b>"
           route.popupTemplate = { //Popups
             title: "{Titre}",
+            outFields: ["*"],
             content: [textElementRoutes,
               {
                 type: "relationship", //Enregistrements associés à l'itinéraire #1 (moyens de transort)
@@ -218,11 +219,8 @@
             view.on("click", (event) => {
               // utilise hitTest pour voir si l'utilisateur a cliqué sur un graphique
               view.hitTest(event).then((response) => {
-                  console.log("response",response.results[0])
                 // vérifie si un graphique est retourné par le hitTest et vérifie que c'est un point (pour ne pas confondre les villes avec les itinéraires)
                 if (response.results[0] && response.results[0].graphic && response.results[0].graphic.layer.geometryType=="point") {
-                    console.log("rep.resultd",response.results[0].graphic.attributes)
-                    console.log("ICI",response.results[0].graphic.attributes.OBJECTID)
                   //La requpete va renvoyer les résultats pour les entités dont l'objectID correspond à celui du graphique sélectionné
                   const query = new Query({
                     objectIds: [
@@ -233,7 +231,6 @@
                   });
                   // queryExtent() retournera l'étendue 3D de l'entité sélectionnée
                   layerView.queryExtent(query).then((result) => {
-                      console.log("rép.resultd",result)
                     view
                       .goTo( //goTo permet de se rendre à la nouvelle vue indiquée
                         {
@@ -265,8 +262,6 @@
               view.hitTest(event).then((response) => {
                 // check if a graphic is returned from the hitTest
                 if (response.results[0] && response.results[0].graphic && response.results[0].graphic.layer.geometryType=="polyline") {
-                    console.log("rép.resultd",response.results[0].graphic.attributes)
-                    console.log("OBJECTID",response.results[0].graphic.attributes.OBJECTID)
                   // Create query object: by specifying objectIds, the query will return results only for
                   // the feature matching the graphic's objectid
                   const query = new Query({
@@ -279,9 +274,7 @@
 
                   // queryExtent() will return the 3D extent of the feature that satisfies the query
                   sceneLayerView.queryExtent(query).then((result) => {
-                      console.log("rép.resultd",result)
                     if (response.results[0].graphic.attributes.OBJECTID=="6") {
-                        console.log("goto/6")
                     view
                       .goTo(
                         {
@@ -296,7 +289,6 @@
                       )
                     }
                     else {
-                        console.log("goto/other")
                     view
                       .goTo(
                         {
@@ -328,53 +320,19 @@
             
      
 
-        ///////////////////////////////////////////////////////////////////ESTHETIQUE///////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////ESTHETIQUE////////////////////////////////////////////////////////////////
         
         
-        //retrait des widgets présents par défaut pour épurer l'ui        
+/*        //retrait des widgets présents par défaut pour épurer l'ui        
         view.ui.remove("navigation-toggle");
         view.ui.remove("zoom");
         view.ui.remove("compass");
-        
-        
-        
-        ///////////////////////////////////////////nuages
-/*        const R = 6358137; // approximate radius of the Earth in m
-        const offset = 300000; // offset from the ground used for the clouds
-        const cloudsSphere = Mesh.createSphere(new Point({
-          x: 0,
-          y: -90,
-          z: -(2 * R + offset)
-        }), {
-          size: 2 * (R + offset),
-          material: {
-            colorTexture: 'https://raw.githubusercontent.com/JapaLenos/JS-API/main/Les-Sept-Sommets/assets/clouds-nasa.png',
-            doubleSided: false,
-            //alphaMode : "auto",
-            //alphaCutoff : 0.7
-              
-          },
-          densificationFactor: 4
-        });
-        cloudsSphere.components[0].shading = "flat";
-        const clouds = new Graphic({
-          geometry: cloudsSphere,
-          symbol: {
-            type: "mesh-3d",
-            symbolLayers: [{
-              type: "fill"
-            }]
-          }
-        });
-        view.graphics.add(clouds);*/
-        
-        
-
-/*        /////////////////////////////////////////////rotation
+      
+        //rotation
                 function rotate() { 
                     if (!view.interacting) {
                         const camera = view.camera.clone(); //crée un clone "camera" de la caméra actuelle
-                        camera.position.longitude += 0.10; //enlève 0.25 degrés de longitudes au clone de la caméra (mettre un signe + pour que la planète tourne dans le sens inverse à son sens de révolution)
+                        camera.position.longitude += 0.10; //rotation dans le sens inverse de révolution pour suivre l'itinéraire de Phileas
                         view.goTo(camera, { animate: true }); //centre la vue sur le clone de la caméra, càd l'ancienne postition -0.25 degrés de longitude (ce qui donne donc l'impression que la planète bouge de 0,25° de lontitude)
                         requestAnimationFrame(rotate); //indique que l'on souhaite exécuter une animation et utilise rotate en fonction de rappel, qui sera appelée avant le rafraîchissement du navigateur (la fonction va donc boucler)
                     }
@@ -387,8 +345,7 @@
              
                  {
                  once : true //à supprimer pour que la planète reprenne sa rotation après interaction
-                });*/
-        
+                });     */   
         
         
       });
