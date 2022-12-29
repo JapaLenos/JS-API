@@ -35,7 +35,7 @@
       function(esriConfig, SceneView, WebScene, FeatureLayer, reactiveUtils, Graphic, Point, Mesh, TextContent,Query,AttachmentsContent) {
         
         
-        ///////////////////////////////////////////////////////////////////SCENE WEB////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////SCENE WEB///////////////////////////////////////////////////////////////////////////////////
         const scene = new WebScene({
           portalItem: { 
             id: "d3b84f82ac5e410b8c6f02f5f4d37248" // ID de la scène web sur arcgis.com
@@ -74,7 +74,7 @@
         
         
         
-        ///////////////////////////////////////////////////////////////////VUE/////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////VUE///////////////////////////////////////////////////////////////////////////////////
         const view = new SceneView({
           map: scene, //scène web référencée plus tôt
           alphaCompositingEnabled: true,
@@ -112,11 +112,12 @@
         
         
         
-        ///////////////////////////////////////////////////////////////////COUCHES//////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////COUCHES///////////////////////////////////////////////////////////////////////////////////
         scene.when(() => {
             
-        ///////////////////////////////////////////////////////////////////ROUTES
+        ///////////////////////////////////////////////////////////////////ROUTE
           const removedRoute = scene.layers.getItemAt(0);
+          
           scene.layers.remove(removedRoute)
             
           const route = new FeatureLayer({
@@ -320,19 +321,20 @@
             
      
 
-        ///////////////////////////////////////////////////////////////////ESTHETIQUE////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////ESTHETIQUE///////////////////////////////////////////////////////////////////////////////////
         
         
         //retrait des widgets présents par défaut pour épurer l'ui        
         view.ui.remove("navigation-toggle");
         view.ui.remove("zoom");
         view.ui.remove("compass");
-      
-/*        //rotation
+           
+
+/*        /////////////////////////////////////////////rotation
                 function rotate() { 
                     if (!view.interacting) {
                         const camera = view.camera.clone(); //crée un clone "camera" de la caméra actuelle
-                        camera.position.longitude += 0.10; //rotation dans le sens inverse de révolution pour suivre l'itinéraire de Phileas
+                        camera.position.longitude += 0.10; //enlève 0.25 degrés de longitudes au clone de la caméra (mettre un signe + pour que la planète tourne dans le sens inverse à son sens de révolution)
                         view.goTo(camera, { animate: true }); //centre la vue sur le clone de la caméra, càd l'ancienne postition -0.25 degrés de longitude (ce qui donne donc l'impression que la planète bouge de 0,25° de lontitude)
                         requestAnimationFrame(rotate); //indique que l'on souhaite exécuter une animation et utilise rotate en fonction de rappel, qui sera appelée avant le rafraîchissement du navigateur (la fonction va donc boucler)
                     }
@@ -345,7 +347,8 @@
              
                  {
                  once : true //à supprimer pour que la planète reprenne sa rotation après interaction
-                });     */   
+                });*/
+        
         
         
       });
