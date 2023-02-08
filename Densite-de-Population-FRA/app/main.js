@@ -2,8 +2,9 @@ require([
         "esri/Map",
         "esri/views/SceneView",
         "esri/layers/FeatureLayer",
-        "esri/widgets/Home"
-      ], function (Map, SceneView, FeatureLayer, Home) {
+        "esri/widgets/Home",
+    "esri/widgets/Daylight"
+      ], function (Map, SceneView, FeatureLayer, Home,Daylight) {
 
 
         // The clipping extent for the scene
@@ -15,7 +16,7 @@ require([
           ymin: 5030349,
           spatialReference: {
             // autocasts as new SpatialReference()
-            wkid: 3857
+            wikd: 3857
           }
         };
 
@@ -35,10 +36,49 @@ require([
                     type : "polygon-3d", // autocasts as new SimpleRenderer()
                     symbolLayers: [{
                         type: "fill",  // autocasts as new LineSymbol3DLayer()
-                        material: { color: [214, 157, 188, 0.4] },
+                        material: { color: [214, 157, 188, 0] },//op = 0.4
                     }]
                 }
             };
+    
+          const popLayer7km = new FeatureLayer({
+            url: "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/fraPopDens_7km/FeatureServer/5",
+            outFields: ["*"],
+            // This keeps the cylinders from poking above the ground
+            elevationInfo: {
+                mode: "relative-to-ground",
+            }
+           }); 
+    
+    
+                popLayer7km.renderer = {
+                type: "simple", // autocasts as new SimpleRenderer()
+                symbol: {
+                    // symbol type required for rendering point geometries
+                    type: "polygon-3d", // autocasts as new PointSymbol3D()
+                    symbolLayers: [
+                        {
+                        // renders points as volumetric objects
+                        type: "extrude", // autocasts as new ObjectSymbol3DLayer()
+                        }
+                    ]
+                },
+                
+                visualVariables: [
+                    {
+                    type: "color",
+                    field: "SUM_population", // field containing data for atmospheric pressure
+                    stops: [{value: 0,color: "#F7E9E9"},{value: 75000,color: "#E297B5"},{value: 380000,color: "#BB4B6C"},{value: 859431,color: "#16041F"}]
+                    },
+                    {
+                    type: "size",
+                    field: "SUM_population", // field containing data for wind speed
+                    stops: [{ value: 0, size: 1 }, { value: 859431, size: 800000 }],
+                    axis: "height"
+                    },
+                ]
+            };
+    
 
 
         /********************************************************************
@@ -50,7 +90,8 @@ require([
         const map = new Map({
           //basemap: "topo-vector",
           layers: [
-              fraEmprise
+              fraEmprise,
+              popLayer7km//,popLayer5km,popLayer3km
           ],
           ground: {
             navigationConstraint: {
@@ -72,11 +113,11 @@ require([
           map: map,
           camera : {
               heading: -5, // face due east
-              tilt: 40,
+              tilt: 50,
               position: {
-                latitude: 31,
-                longitude: 4,
-                z: 2600000,
+                latitude: 27.5,
+                longitude: 5,
+                z: 2300000,
                 //spatialReference: { wkid: 3857 }
               }
           },
@@ -96,9 +137,7 @@ require([
           },
 
         });
-        // Set up a home button and add to the ui top-left
-        const homeBtn = new Home({ view: view });
-        view.ui.add(homeBtn, "top-left");
+
           
 
       });
