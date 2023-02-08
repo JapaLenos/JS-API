@@ -49,8 +49,6 @@ require([
                 mode: "relative-to-ground",
             }
            }); 
-    
-    
                 popLayer7km.renderer = {
                 type: "simple", // autocasts as new SimpleRenderer()
                 symbol: {
@@ -78,8 +76,6 @@ require([
                     },
                 ]
             };
-    
-
 
         /********************************************************************
          * Create a map with the above defined layers and a topographic
@@ -137,7 +133,5 @@ require([
           },
 
         });
-
-          
 
       });
