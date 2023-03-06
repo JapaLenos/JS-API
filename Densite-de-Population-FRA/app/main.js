@@ -23,7 +23,7 @@ require([
   });
 
   popLayer7km.popupTemplate = {
-    title: "<b>Population :",
+    title: "<b>Population :</b>",
     content: "{SUM_population} habitants"
   };
 
