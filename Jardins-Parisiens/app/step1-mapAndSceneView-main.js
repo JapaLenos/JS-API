@@ -16,12 +16,12 @@ require(["esri/Map", "esri/Basemap", "esri/views/SceneView"], (
     map: map,
     camera: {
       position: {
-        longitude: 2.3122219,
-        latitude: 48.846614,
-        z: 1620.71497
+        longitude: 2.340861136194503,
+        latitude: 48.88276594605576,
+        z: 178.8139155479148
       },
-      heading: 80,
-      tilt: 50
+      heading: 29.620133897254565,
+      tilt: 65.59724234196116
     }
   });
 });
