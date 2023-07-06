@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Remarquables</title>
+    <link rel="icon" type="image/x-icon" href="style/favicon.png"> <!--icone de la page web, s'affiche à droite de l'onglet. Disponible ici : https://github.com/JapaLenos/JS-API/blob/main/Jardins-Parisiens/style/favicon.png-->
+      
+    <link 
+        rel="stylesheet" 
+        href="style/style.css" 
+    /> <!--lien vers ma feuille de style personnalisée. Attention à adapter le chemin à votre projet-->
+      
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.27/esri/themes/light/main.css" 
+    /><!--lien vers la feuille de style de l'API.-->
+      
+    <script src="https://js.arcgis.com/4.27/"></script><!--lien vers l'API JavaScript d'ArcGIS, nous permettant de faire appel à ses services-->
+    <script src="app/step1-mapAndSceneView-main.js"></script><!--lien vers mon code JavaScript. Attention à adapter le chemin à votre projet-->
+  </head>
+
+  <body>
+
+    <div id="full">
+      <div id="viewDiv"></div><!--balise div qui contiendra la vue de la carte-->
+      <div class="mentions"><!--optionnel : habillage du site = ajout des crédits-->
+        <h4>
+          RÉALISÉ AVEC 
+          <a
+            href="https://developers.arcgis.com/javascript/latest/"
+            target="_blank"
+            >L'API JAVASCRIPT D'ARCGIS</a
+          >
+          <br/>GITHUB :
+          <a
+            href="https://github.com/JapaLenos/JS-API/tree/main/Jardins-Parisiens"
+            target="_blank"
+            >@JAPALENOS</a
+          ><br/>
+          DONNÉES ISSUES DU
+          <a
+            href="https://opendata.paris.fr/explore/dataset/arbresremarquablesparis/export/"
+            target="_blank"
+            >PORTAIL OPEN DATA PARIS | DATA
+            </a>  
+        </h4>
+      </div>
+    </div>
+
+
+  </body>
+</html>
