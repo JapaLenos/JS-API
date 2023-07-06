@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Remarquables</title>
+    <link rel="icon" type="image/x-icon" href="/style/favicon.png">
+      
+    <link rel="stylesheet" href="style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.27/esri/themes/light/main.css"
+    />
+      
+    <script src="https://js.arcgis.com/4.27/"></script>
+    <script src="app/final-main.js"></script>
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.4.3/calcite.esm.js"></script>
+  </head>
+
+  <body>
+
+    <div id="full">
+      <div class="titre">
+        <h1>REMARQUABLES</h1>
+      </div>
+      <div id="viewDiv"></div>
+      <div class="mentions">
+        <h4>
+          RÉALISÉ AVEC 
+          <a
+            href="https://developers.arcgis.com/javascript/latest/"
+            target="_blank"
+            >L'API JAVASCRIPT D'ARCGIS</a
+          >
+          <br/>GITHUB :
+          <a
+            href="https://github.com/JapaLenos/JS-API/tree/main/Jardins-Parisiens"
+            target="_blank"
+            >@JAPALENOS</a
+          ><br/>
+          DONNÉES ISSUES DU
+          <a
+            href="https://opendata.paris.fr/explore/dataset/arbresremarquablesparis/export/"
+            target="_blank"
+            >PORTAIL OPEN DATA PARIS | DATA
+            </a> <br/><br/>
+            AFFICHER TOUS LES ARBRES 
+            <calcite-switch></calcite-switch>    
+        </h4>
+      </div>
+        <div id="loader">
+            <calcite-loader label="Chargement de la page" scale="l"></calcite-loader>
+        </div>
+    </div>
+
+
+  </body>
+</html>
