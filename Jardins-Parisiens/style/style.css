@@ -1,6 +1,6 @@
 body{
     user-select: none;
-    margin: 0
+    margin: 0  ;
 }
 ,
   #viewDiv {
@@ -17,12 +17,6 @@ body{
     width: 100%;
     position : absolute
   }
-#loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-25%, -50%);
-}
 
 .titre {
     width: 100%;
@@ -94,9 +88,28 @@ div.esri-widget--button {
     color: #7B656F;
     z-index: 10
 }
-/*span.esri-bookmarks__bookmark-name {
-    color: #7B656F;
+
+    .label-wrapper {
+      display: flex;
+      cursor: pointer;
+    }
+
+calcite-switch {
+      margin: 0 0.5rem;
+    }
+
+.mentions {
+    --calcite-ui-brand: #7B656F;
+    --calcite-ui-brand-hover: #473B40;
+        }
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, -50%);
+  z-index: 100;
+    --calcite-ui-brand: #473B40;
+    --calcite-ui-brand-hover: #7B656F;
+    --calcite-ui-brand-press: #BF9DAA;
 }
-button.esri-bookmarks__bookmark-button {
-    color: #7B656F;
-}*/
