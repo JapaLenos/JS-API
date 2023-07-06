@@ -83,6 +83,7 @@ body{
     text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF
   }
 
+/* --------------modification d'éléments de la feuille de style par défaut de l'API----------------- */
 div.esri-widget--button {
     background-color: #FFF;
     color: #7B656F;
