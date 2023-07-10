@@ -2,9 +2,7 @@ require([
         "esri/Map",
         "esri/Basemap",
         "esri/views/SceneView",
-        "esri/layers/GeoJSONLayer",
-        //"esri/layers/CSVLayer",
-          
+        "esri/layers/GeoJSONLayer",  
       ], 
         
         (Map, Basemap, SceneView ,GeoJSONLayer,/*CSVLayer*/) => {
@@ -40,13 +38,6 @@ require([
             });
             
             map.add(arbresRemarquables);
-            
-/*            const arbresRemarquables = new CSVLayer({
-            url: "/app/arbresremarquablesparis.csv",
-            screenSizePerspectiveEnabled: false,
-            });
-            
-            map.add(arbresRemarquables);*/
             
         });
 });
