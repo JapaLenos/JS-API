@@ -138,8 +138,8 @@ require([
         };
             
             const arbresRemarquables = new GeoJSONLayer({
-                url: "/app/arbresremarquablesparis.geojson",
-                //screenSizePerspectiveEnabled: false,
+                url: "https://raw.githubusercontent.com/JapaLenos/JS-API/main/Jardins-Parisiens/app/arbresremarquablesparis.geojson",
+                copyright: "Arbres remarquables - Open portail Paris Data",
                 renderer: treeRenderer,
                 elevationInfo: {
                     mode: "on-the-ground"
