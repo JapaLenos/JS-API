@@ -150,8 +150,8 @@ require([
             
             /////Création d'une couche à partir du JSON
             const arbresRemarquables = new GeoJSONLayer({
-                url: "/app/arbresremarquablesparis.geojson",
-                //screenSizePerspectiveEnabled: false,
+                url: "https://raw.githubusercontent.com/JapaLenos/JS-API/main/Jardins-Parisiens/app/arbresremarquablesparis.geojson",
+                copyright: "Arbres remarquables - Open portail Paris Data",
                 renderer: treeRenderer,
                 elevationInfo: {
                     mode: "on-the-ground"
@@ -164,7 +164,7 @@ require([
         /////Création des popups
             
         const textElement1 = new TextContent();
-        textElement1.text = "Cet arbre remarquable est un <b>{com_nom_usuel}</b> (nom vernaculaire) ou <b>{com_nom_latin}</b> (nom latin). Il appartient à l'espèce <b>{arbres_espece}</b> du genre <b>{arbres_genre}</b> et mesure <b>{arbres_hauteurenm} mètres </b> pour une circonférence de <b>{arbres_circonferenceencm} centimètres.</b> </br> Date de plantation : {com_annee_plantation}"  
+        textElement1.text = "Cet arbre remarquable est un <b>{com_nom_usuel}</b> (nom vernaculaire) ou <b>{com_nom_latin}</b> (nom latin). Il appartient à l'espèce <b>{arbres_espece}</b> du genre <b>{arbres_genre}</b> et mesure <b>{arbres_hauteurenm} mètres </b> pour une circonférence de <b>{arbres_circonferenceencm} centimètres.</b> <br> Date de plantation : {com_annee_plantation}"  
         
         const textElement2 = new TextContent();
         textElement2.text = "{com_descriptif}" 
