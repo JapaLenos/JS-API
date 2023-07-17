@@ -244,7 +244,6 @@ require([
 
     const bookmarks = new Bookmarks({
       view: view,
-      container: document.createElement("div"),
       bookmarks: [
         // array of bookmarks defined manually
         new Bookmark({
