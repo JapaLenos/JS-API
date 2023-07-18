@@ -160,8 +160,8 @@ require([
 
     /////Création d'une couche à partir du JSON
     const arbresRemarquables = new GeoJSONLayer({
-      url: "/app/arbresremarquablesparis.geojson",
-      //screenSizePerspectiveEnabled: false,
+      url: "https://raw.githubusercontent.com/JapaLenos/JS-API/main/Jardins-Parisiens/app/arbresremarquablesparis.geojson",
+      copyright: "Arbres remarquables - Open portail Paris Data",
       renderer: treeRenderer,
       elevationInfo: {
         mode: "on-the-ground",
@@ -248,13 +248,10 @@ require([
     //Paramétrage des bookmarks
     const bookmarks = new Bookmarks({
       view: view,
-      icon: "heart",
-      container: document.createElement("div"),
       bookmarks: [
         // array of bookmarks defined manually
         new Bookmark({
           name: "Montmartre",
-          icon: "mask-outside",
           viewpoint: {
             camera: {
               position: {
