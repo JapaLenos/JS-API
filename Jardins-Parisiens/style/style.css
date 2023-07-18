@@ -95,9 +95,6 @@ div.esri-widget--button {
       cursor: pointer;
     }
 
-calcite-switch {
-      margin: 0 0.5rem;
-    }
 
 .mentions {
     --calcite-ui-brand: #7B656F;
