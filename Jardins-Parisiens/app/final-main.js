@@ -264,13 +264,11 @@ require([
     //Paramétrage des bookmarks
     const bookmarks = new Bookmarks({
       view: view,
-      icon: "heart",
       container: document.createElement("div"),
       bookmarks: [
         // array of bookmarks defined manually
         new Bookmark({
           name: "Montmartre",
-          icon: "mask-outside",
           viewpoint: {
             camera: {
               position: {
