@@ -9,8 +9,6 @@ require([
   "esri/popup/content/support/ImageMediaInfoValue",
   "esri/widgets/Bookmarks",
   "esri/webmap/Bookmark",
-  "esri/widgets/Zoom",
-  "esri/rest/support/Query"
 ], (
   Map,
   Basemap,
@@ -22,8 +20,6 @@ require([
   ImageMediaInfoValue,
   Bookmarks,
   Bookmark,
-  Zoom,
-  Query
 ) => {
   const map = new Map({
     basemap: new Basemap({
