@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Pimp my Cam</title>
+  <link rel="icon" type="image/x-icon" href="style/favicon.png">
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
+
+  <script src="https://js.arcgis.com/4.27/"></script>
+  <script src="app\main.js"></script>
+  <script type="module" src="https://js.arcgis.com/calcite-components/1.4.3/calcite.esm.js"></script>
+
+</head>
+
+<body>
+  <div id="full">
+    <div id="viewDiv"></div>
+    <div id="camera-parameters" class="esri-widget">
+      <h3>PARAMÈTRES DE CAMÉRA :</h3>
+      <div>
+        <pre id="camera">camera: {
+    position: {
+        longitude: <span id="lon"></span>,
+        latitude: <span id="lat"></span>,
+        z: <span id="z"></span>
+      },
+    heading: <span id="heading"></span>,
+    tilt: <span id="tilt"></span>
+}
+</pre>
+      </div>
+
+      <div class="mentions">
+        <h4>
+          RÉALISÉ AVEC
+          <a href="https://developers.arcgis.com/javascript/latest/" target="_blank">L'API JAVASCRIPT D'ARCGIS</a>
+          <br />GITHUB :
+          <a href="https://github.com/JapaLenos/JS-API/tree/main/Scene-Camera-Parameters" target="_blank">@JAPALENOS</a>
+
+        </h4>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
