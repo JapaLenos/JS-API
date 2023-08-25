@@ -26,15 +26,6 @@ require([
       heading: 355.07932581734315,
       tilt: 0.12658165562978302
     },
-    popup: {
-
-      dockEnabled: true,
-      dockOptions: {
-        position: "bottom-right",
-        breakpoint: false,
-        buttonEnabled: false
-      }
-    }
   });
 
   view.when(() => {
