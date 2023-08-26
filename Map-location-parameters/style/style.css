@@ -1,0 +1,118 @@
+body{
+    
+    margin: 0  ;
+}
+,
+  #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position : relative
+  }
+  #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position : absolute
+  }
+
+  h1 {
+    padding-top : 1.5%;
+    font-weight: bolder;
+    font-size: 450%;
+    font-family: "Playfair Display", "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+    text-shadow: 1px 1px 2px white;
+    opacity : 90%;
+    position: absolute;
+    text-align: center;
+    height : 10%;
+    margin: auto;
+    z-index: 1;
+  }
+
+  h4 {
+    padding-top : 1%;
+    font-size: 100%;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+    color: #C8E4B2;
+    position: absolute;
+    z-index: 10;
+    text-align: left;
+    margin-left: 5%;
+    bottom : 1%;
+    
+  }
+  h3 {
+    user-select: none;
+    font-weight : bold;
+    font-size: 100%;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+    color: #C8E4B2;
+    text-align: left;
+    margin-left: 5%;
+    position: absolute;
+
+  }
+
+  .bouton {
+    --calcite-ui-brand: #9ED2BE;  
+    --calcite-ui-brand-hover: #7EAA92;
+    --calcite-ui-text-inverse: #000000;
+    font-weight : bold;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
+
+pre{
+    padding-top : 10%;
+    font-size: 100%;
+    font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+    text-align: left;
+    margin-left: 5%;
+    padding-bottom : 5%;
+    position: absolute;
+    
+}
+span{
+    color: #7EAA92;
+}
+  a {
+    color: #9ED2BE;
+    text-decoration: none;
+  }
+a:hover{
+    color: #7EAA92;
+    text-decoration: none;
+  }
+
+div.esri-widget--button {
+    background-color: #FFF;
+    color: #7EAA92;
+    z-index: 10
+}
+
+.mentions {
+    user-select: none;
+      }
+
+  #camera-parameters {
+    position: absolute;
+    z-index: 70;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100%;
+    width: 350px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 14px;
+    line-height: 30px;
+    overflow: auto;
+  }
