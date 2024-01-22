@@ -1,0 +1,110 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>The City of Lights</title>
+  <link rel="icon" type="image/x-icon" href="style/favicon.png">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/dark/main.css">
+  <script src="https://js.arcgis.com/4.28/"></script>
+  <script type="module" src="https://js.arcgis.com/calcite-components/2.1.0/calcite.esm.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.1.0/calcite.css" />
+  <script type="module" src="https://js.arcgis.com/map-components/4.28/arcgis-map-components.esm.js"></script>
+  <style>
+    html,
+    body,
+    arcgis-map {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    #contener {
+      display: flex;
+    }
+
+    #desc {
+      padding-left: 3%;
+    }
+
+    #credits {
+      padding-top: 2%
+    }
+
+    .custom-theme {
+      --calcite-color-brand: #ffffd4;
+      --calcite-color-brand-hover: #ffea4a;
+      --calcite-color-brand-press: #ffff85;
+      --calcite-color-text-2: #ffffd4;
+      background-color: var(--calcite-color-background);
+    }
+  </style>
+</head>
+
+<body class="calcite-mode-dark custom-theme">
+
+  <calcite-shell>
+    <calcite-navigation slot="header">
+      <calcite-navigation-logo slot="logo" target="_blank"></calcite-navigation-logo>
+      <calcite-menu slot="content-end">
+        <calcite-menu-item id='item' text="Item"></calcite-menu-item>
+        <calcite-menu-item id='about' text="About"></calcite-menu-item>
+      </calcite-menu>
+    </calcite-navigation>
+
+    <calcite-modal aria-labelledby="modal-title" id="modal">
+      <div slot="header" id="modal-title">
+      </div>
+      <div slot="content">
+        <div id="contener">
+          <img id="mapthumbnail">
+          <div id="desc"></div>
+        </div>
+        <div id="credits"></div>
+      </div>
+    </calcite-modal>
+
+    <arcgis-map item-id="e150fc1b9d8b4ceeb53903df1de85069">
+      <arcgis-layer-list position="bottom-left" />
+    </arcgis-map>
+
+  </calcite-shell>
+  <calcite-loader></calcite-loader>
+
+  <script>
+    document.querySelector("arcgis-map").addEventListener("viewReady", async (event) => {
+      const view = event.detail.view;
+      
+      const portalItem = view.map.portalItem;
+      
+      const navigationLogo = document.querySelector("calcite-navigation-logo");
+      navigationLogo.heading = portalItem.title;
+      navigationLogo.description = portalItem.snippet;
+      navigationLogo.icon = "lightbulb"
+      
+      const item = document.querySelector('calcite-menu-item[id="item"]');
+      item.href = portalItem.itemPageUrl;
+      
+      const modalTitle = document.querySelector('div[id="modal-title"]');
+      modalTitle.textContent = portalItem.title + ": " + portalItem.snippet;
+      const thumbnail = document.querySelector('img[id="mapthumbnail"]');
+      thumbnail.src = portalItem.thumbnailUrl
+      const desc = document.querySelector('div[id="desc"]');
+      desc.textContent = portalItem.description;
+      const credits = document.querySelector('div[id="credits"]');
+      credits.textContent = portalItem.accessInformation;
+      
+      // turn off the loader once the view is ready
+      document.querySelector("calcite-loader").hidden = true;
+      
+      const modal = document.getElementById("modal");
+      about?.addEventListener("click", function() {
+        modal.open = true;
+      });
+    });
+  </script>
+
+</body>
+
+</html>
