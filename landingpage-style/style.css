@@ -92,6 +92,9 @@ body section .row {
 .card .cover.item-f {
   background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/main/Map-location-parameters/style/miniature-parametres-camera-2D.JPG");
 }
+.card .cover.item-g {
+  background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/main/The-City-Of-Lights/style/miniature-Paris.JPG");
+}
 .card .cover h1 {
   font-weight: 600;
   position: absolute;
