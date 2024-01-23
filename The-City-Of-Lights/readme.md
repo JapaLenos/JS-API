@@ -5,6 +5,4 @@ Cette application permet d'observer les lumières ascendantes et descendantes é
 
 ![screenshot](./style/Screenshot.JPG)
 
-L'application a été réalisée avec l'[API JavaScript d'ArcGIS](https://developers.arcgis.com/javascript/latest/), en tirant parti des composants du SDK introduits en version 4.8, ainsi que des composants du Calcite Design System.
-
-Vous pouvez retrouver l'[article CodeTheMap](https://www.codethemap.fr/2022/11/un-mardi-une-appli-21-les-sept-sommets.html) pour comprendre comment cette application a été construite.
+L'application a été réalisée avec le [SDK JavaScript d'ArcGIS](https://developers.arcgis.com/javascript/latest/), en tirant parti des [Map components](https://developers.arcgis.com/javascript/latest/components/) introduits en version 4.28, ainsi que des composants du [Calcite Design System](https://developers.arcgis.com/calcite-design-system/).
