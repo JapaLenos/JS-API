@@ -86,12 +86,12 @@ require([
     container: "viewDiv",
     map: map,
     camera: {
-      heading: -5, 
+      heading: 10, 
       tilt: 50,
       position: {
-        latitude: 27.5,
-        longitude: 5,
-        z: 2300000,
+        latitude: 30.5,
+        longitude: -1,
+        z: 2000000,
         spatialReference: { wkid: 3857 }
       }
     },
