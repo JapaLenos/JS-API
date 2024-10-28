@@ -95,6 +95,9 @@ body section .row {
 .card .cover.item-g {
   background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/main/The-City-Of-Lights/style/miniature-Paris.JPG");
 }
+.card .cover.item-h {
+  background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/Hexagons-30DayMapChallenge/img/miniature_hexagones.JPG");
+}
 .card .cover h1 {
   font-weight: 600;
   position: absolute;
