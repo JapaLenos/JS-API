@@ -31,7 +31,11 @@ h1 {
   height: 10%;
   margin: auto;
   user-select: none;
-  background-color: rgba(33,37,38,0.5); 
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    background-color: rgba(33,37,38,0.5);
+  }
 }
 @media screen and (max-width: 674px) {
   h1 {
