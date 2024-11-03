@@ -91,8 +91,6 @@ require([
       }
     },
     viewingMode: "local",
-    clippingArea: fraExtent,
-    extent: fraExtent,
     environment: {
       background: {
         type: "color",
