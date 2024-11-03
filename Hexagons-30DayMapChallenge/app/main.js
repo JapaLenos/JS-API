@@ -1,16 +1,11 @@
 require([
   "esri/Map",
   "esri/views/SceneView",
-  "esri/layers/FeatureLayer",
-  "esri/widgets/Home",
-  "esri/layers/support/LabelClass"
+  "esri/layers/FeatureLayer"
 ], function (
   Map,
   SceneView,
-  FeatureLayer,
-  Home,
-  Daylight,
-  LabelClass
+  FeatureLayer
 ) {
   const elevLayer = new FeatureLayer({
     url:
