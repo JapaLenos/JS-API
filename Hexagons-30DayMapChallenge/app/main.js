@@ -67,16 +67,6 @@ require([
     }
   });
 
-  let fraExtent = {
-    xmax: 1091178,
-    xmin: -714403,
-    ymax: 6720023,
-    ymin: 5030349,
-    spatialReference: {
-      wikd: 3857
-    }
-  };
-
   var view = new SceneView({
     container: "viewDiv",
     map: map,
