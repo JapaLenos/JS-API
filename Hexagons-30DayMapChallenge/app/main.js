@@ -10,6 +10,7 @@ require([
   const elevLayer = new FeatureLayer({
     url:
       "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/Altitudes_hexagones_WFL1/FeatureServer/1",
+    copyright: "SRTM - NASA",
     outFields: ["*"],
     elevationInfo: {
       mode: "relative-to-ground"
