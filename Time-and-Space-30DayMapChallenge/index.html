@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>
+    Breath of the Arctic
+  </title>
+  <link rel="stylesheet" href="style/style.css" />
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+  <script src="https://js.arcgis.com/4.30/"></script>
+  <script src="app/main.js"></script>
+  <script type="module" src="https://js.arcgis.com/calcite-components/2.1.0/calcite.esm.js"></script>
+    <style>
+        .custom-example-theme {
+            --calcite-color-brand: #96d4d4;
+            --calcite-color-brand-hover: #6ca6a6;
+            --calcite-color-brand-press: #408787;
+        }
+    </style>
+</head>
+
+<body class="calcite-mode-dark custom-example-theme" >
+  <calcite-shell>
+    <calcite-modal aria-labelledby="modal-title" id="modal">
+      <div slot="header" id="modal-title">BREATH OF THE ARCTIC
+      </div>
+      <div slot="content">
+        <div id="contener">
+          <img id="mapthumbnail">
+          <div id="desc">Cette application représente les variations d'étendue de l'Arctique, c'est-à-dire des parties de l'océan ayant gelé pour former une "mer de glace", de la fin de l'année 1978 à nos jours. La ligne discontinue blanche montre la superficie maximale enregistrée en mars 1979.<br>A l'image d'un cœur qui bat ou d'un poumon qui respire, l'Arctique se dilate et se rétracte au rythme des saisons, mais il est aussi clair que la superficie moyenne de celui-ci ne cesse de diminuer.<br>Retrouvez plus d'informations sur la création de cette application dans <a href="https://https://www.codethemap.fr/" target="_blank">cet article</a>.<br><i>Les données proviennent du <a href="https://nsidc.org/data/search#keywords=G02135" target="_blank">National Snow and Ice Data Center</a> et sont accessibles <a href="https://esrifrance.maps.arcgis.com/home/item.html?id=d1fb8225058e4a0d96ead7b9a574a652" target="_blank">depuis le Living Atlas d'ArcGIS</a>.</i> </div>
+        </div>
+      </div>
+    </calcite-modal>
+  </calcite-shell>
+
+  <div id="full">
+
+    <div class="titre">
+      <h3>- BREATH OF THE ARCTIC -</h3>
+    </div>
+
+    <div id="dateDisplay">
+      <h3>-/-</h3>
+    </div>
+    <div id="viewDiv"></div>
+    <div class="mentions">
+      <h4> <a href="https://30daymapchallenge.com/" target="_blank">#30DAYSMAPCHALLENGE </a> JOUR 12 : TIME & SPACE <br> RENDU INTERACTIF AVEC <a href="https://developers.arcgis.com/javascript/latest/" target="_blank">L'API JAVASCRIPT D'ARCGIS</a> <br>GITHUB : <a href="https://github.com/JapaLenos/JS-API" target="_blank">@JAPALENOS</a>
+        <div id="about"><a href="#">EN SAVOIR +</a></div>
+      </h4>
+    </div>
+  </div>
+  <div id="loader">
+    <calcite-loader label="Chargement de la page" scale="l"></calcite-loader>
+  </div>
+
+</body>
+
+</html>
