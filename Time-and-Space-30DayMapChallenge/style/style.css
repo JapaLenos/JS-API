@@ -1,0 +1,92 @@
+html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: "#212526";
+}
+#loader {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  z-index: 200;
+  padding-top: 1%;
+  font-weight: normal;
+  font-size: 170%;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+  color: #dbcdcb;
+  position: absolute;
+  z-index: 9;
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  margin: auto;
+  user-select: none;
+}
+h4 {
+  padding-top: 1%;
+  font-weight: normal;
+  font-size: 70%;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+  color: #dbcdcb;
+  position: absolute;
+  z-index: 10;
+  text-align: left;
+  margin-left: 5%;
+  bottom: 1%;
+  user-select: none;
+}
+
+a {
+  color: rgb(150, 212, 212);
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(108, 166, 166);
+  text-decoration: none;
+}
+
+#dateDisplay {
+  z-index: 150;
+  font-weight: normal;
+  position: absolute;
+  font-size: 120%;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+  position: absolute;
+  user-select: none;
+  padding-top: 1.6%;
+}
+@media screen and (min-width: 500px) {
+  #dateDisplay {
+    right: 1%;
+  }
+}
+@media screen and (max-width: 500px) {
+  #dateDisplay {
+    width: 100%;
+    text-align: center;
+    top: 5%;
+  }
+}
+
+#contener {
+  display: flex;
+}
+
+#desc {
+  padding-left: 3%;
+}
+
+#credits {
+  padding-top: 2%;
+}
