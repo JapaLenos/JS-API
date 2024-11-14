@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>
+    Photohypses
+  </title>
+  <link rel="stylesheet" href="style/style.css" />
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+  <script src="https://js.arcgis.com/4.30/"></script>
+  <script src="app/main.js"></script>
+  <script type="module" src="https://js.arcgis.com/calcite-components/2.1.0/calcite.esm.js"></script>
+    <style>
+        .custom-example-theme {
+            --calcite-color-brand: #DD3497;
+            --calcite-color-brand-hover: #AE017E;
+            --calcite-color-brand-press: #7A0177;
+        }
+    </style>
+</head>
+
+<body class="calcite-mode-dark custom-example-theme" >
+  <calcite-shell>
+    <calcite-modal aria-labelledby="modal-title" id="modal">
+      <div slot="header" id="modal-title">PHOTOHYPSES
+      </div>
+      <div slot="content">
+        <div id="contener">
+          <img id="mapthumbnail">
+          <div id="desc">Non, ce n'est pas du tout une carte d'élévation ! Cette application représente les densités de photos que j'ai prises avec mon téléphones dans différents endroits.<br>Pour moi, chacune de ses collines a une signification particulière, et est associée à de plus ou moins nombreux souvenirs.<br>Vous souhaitez créer votre propre carte de densité de photos ? Retrouvez plus d'informations sur la création de cette application dans <a href="https://https://www.codethemap.fr/" target="_blank">cet article</a>.<br><i>Cette application est inspirée de l'application de l'application Fire Emergency Calls de <a href="https://github.com/RalucaNicola" target="_blank">@RalucaNicola</a>.</i> </div>
+        </div>
+      </div>
+    </calcite-modal>
+  </calcite-shell>
+
+  <div id="full">
+
+    <div class="titre">
+      <h3>- PHOTOHYPSES -</h3>
+    </div>
+
+    <div id="viewDiv"></div>
+    <div class="mentions">
+      <h4> <a href="https://30daymapchallenge.com/" target="_blank">#30DAYSMAPCHALLENGE </a> JOUR 15 : MY DATA <br> RENDU INTERACTIF AVEC <a href="https://developers.arcgis.com/javascript/latest/" target="_blank">L'API JAVASCRIPT D'ARCGIS</a> <br>GITHUB : <a href="https://github.com/JapaLenos/JS-API" target="_blank">@JAPALENOS</a><br>INSPIRÉ DU TRAVAIL DE <a href="https://github.com/RalucaNicola" target="_blank">@REALUCANICOLA</a> <br>
+        <div id="about"><a href="#">EN SAVOIR +</a></div>
+      </h4>
+    </div>
+  </div>
+  <div id="loader">
+    <calcite-loader label="Chargement de la page" scale="l"></calcite-loader>
+  </div>
+
+</body>
+
+</html>
