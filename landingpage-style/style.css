@@ -101,6 +101,9 @@ body section .row {
 .card .cover.item-i {
   background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/Time-and-Space-30DayMapChallenge/img/miniature_BreathOfTheArctic_noUI.gif");
 }
+.card .cover.item-j {
+  background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/My-Data-30DayMapChallenge/img/photohypses_miniature.JPG");
+}
 .card .cover h1 {
   font-weight: 600;
   position: absolute;
