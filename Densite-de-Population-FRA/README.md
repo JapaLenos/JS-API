@@ -6,4 +6,5 @@ L'application a été réalisée avec l'[API JavaScript d'ArcGIS](https://develo
 
 Vous pouvez retrouver l'[article CodeTheMap](https://www.codethemap.fr/2023/02/un-mardi-une-appli-23-utiliser-des-gros.html) pour plus de discussion autour de l'utilisation de gros volumes de données dans la carto web.
 
-![screenshot](./img/screenshot.PNG)
+[<img src="./img/screenshot.PNG">](https://japalenos.github.io/JS-API/Densite-de-Population-FRA/)
+
