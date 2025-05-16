@@ -1,0 +1,57 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+calcite-shell {
+  --calcite-color-brand: #57a59d;
+}
+
+
+h4 {
+  font-weight: normal;
+  font-size: 100%;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+  color: #473b40;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+calcite-button {
+  --calcite-color-brand: #ffffff;
+  --calcite-color-brand-hover: #f3f3f3;
+  --calcite-color-text-inverse: #4a4a4a;
+  --calcite-color-brand-press: #c7eaff;
+}
+
+arcgis-map {
+  position: relative;
+}
+
+#slider-container {
+  width: 98%;
+  padding-left: 0.7rem;
+}
+
+#switch-container {
+  position: absolute;
+  bottom: 4%;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 8px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+#credit {
+  padding-top: 1em;
+}
+
+.esri-legend__layer-body {
+  display: none;
+}

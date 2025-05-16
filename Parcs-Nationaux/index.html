@@ -1,0 +1,147 @@
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+    <title>Parcs nationaux de France</title>
+
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/3.0.2/calcite.css" />
+    <script type="module" src="https://js.arcgis.com/calcite-components/3.0.2/calcite.esm.js"></script>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.32/"></script>
+    <script type="module" src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"></script>
+  </head>
+
+  <body>
+    <calcite-shell>
+      <arcgis-map item-id="55496d29650f4e11b53b4c9d724519cc">
+        <arcgis-zoom position="top-left"></arcgis-zoom>
+        <arcgis-expand position="top-left" expand-tooltip="Explorer les signets" auto-collapse>
+          <arcgis-bookmarks></arcgis-bookmarks>
+        </arcgis-expand>
+        <arcgis-expand position="top-left" expand-tooltip="Afficher la légende" expanded>
+          <arcgis-legend></arcgis-legend>
+        </arcgis-expand>
+
+        <calcite-dialog modal drag-enabled heading="Parcs Nationaux de France" id="informations">
+          <div id="description"></div>
+          <div id="credit"></div>
+        </calcite-dialog>
+
+        <div id="switch-container">
+          <h4>
+            Afficher la fréquentation
+            <calcite-switch id="switchbutton" checked></calcite-switch>
+          </h4>
+        </div>
+      </arcgis-map>
+
+      <calcite-shell-panel id="slider-panel" slot="panel-bottom" layout="horizontal">
+        <div id="slider-container">
+          <span id="slider-label">Années d'ouverture des parcs nationaux :</span>
+          <calcite-slider
+            id="yearSlider"
+            label-handles
+            label-ticks
+            min="1963"
+            max="2025"
+            max-label="2025"
+            value="2019"
+            scale="m"></calcite-slider>
+        </div>
+      </calcite-shell-panel>
+    </calcite-shell>
+
+    <script>
+      customElements.whenDefined("arcgis-map").then(() => {
+        const arcgisMap = document.querySelector("arcgis-map");
+
+        arcgisMap.addEventListener("arcgisViewReadyChange", async (event) => {
+          
+          // création du bouton d'informations et ajout à l'interface
+          const infoButton = document.createElement("calcite-button");
+          infoButton.id = "infoButton";
+          infoButton.setAttribute("appearance", "solid");
+          infoButton.setAttribute("scale", "m");
+          infoButton.setAttribute("icon-start", "information");
+          infoButton.classList.add("esri-widget", "esri-component");
+          infoButton.label = "Explorer les signets";
+
+          const uiTopLeft = document.querySelector(".esri-ui-top-left");
+          if (uiTopLeft && !document.getElementById("infoButton")) {
+            uiTopLeft.appendChild(infoButton);
+          }
+          
+          
+          const yearSlider = document.getElementById("yearSlider");
+          const switchbutton = document.querySelector("calcite-switch");
+          const legendExpand = document.querySelector("arcgis-expand arcgis-legend")?.closest("arcgis-expand");
+          const infoContent = document.getElementById("description");
+          const creditContent = document.getElementById("credit");
+          const { portalItem } = event.target.map;
+
+          // peuplement de la fenêtre d'informations
+          if (portalItem?.snippet) {
+            infoContent.innerHTML = portalItem.snippet;
+            creditContent.innerHTML = portalItem.accessInformation;
+          }
+          
+          // récupération des calques de la carte
+          const layer_location = arcgisMap.map.layers.at(0);
+          const layer_frequentation = arcgisMap.map.layers.at(1);
+          
+          //attente du chargement complet des couches
+          await layer_location.when();
+          await layer_frequentation.when();
+          
+          // récupération de toutes les années d'ouvertures uniques et configuration du slider
+          const query = layer_frequentation.createQuery();
+          query.outFields = ["annee_creation"];
+          query.returnDistinctValues = true;
+          query.orderByFields = ["annee_creation ASC"];
+          query.where = "annee_creation IS NOT NULL";
+
+          const results = await layer_frequentation.queryFeatures(query);
+          const years = [...new Set(results.features.map((f) => f.attributes.annee_creation))];
+          const difference = Math.max(...years) - Math.min(...years);
+
+          yearSlider.labelTicks = true;
+          yearSlider.ticks = difference;
+
+          // aimantation aux stops et filtrage dynamique de la couche visible en fonction de la position du slider
+          yearSlider.addEventListener("calciteSliderInput", () => {
+            const val = yearSlider.value;
+            const nearest = years.reduce((prev, curr) => (Math.abs(curr - val) < Math.abs(prev - val) ? curr : prev));
+            yearSlider.value = nearest;
+
+            const targetLayer = layer_frequentation.visible ? layer_frequentation : layer_location;
+            targetLayer.definitionExpression = `annee_creation <= ${nearest}`;
+          });
+
+          // bascule de la visibilité des calques et de la légende
+          
+          const changeVisibility = () => {
+            const selectedYear = yearSlider.value;
+            const filter = `annee_creation <= ${selectedYear}`;
+            layer_location.definitionExpression = filter;
+            layer_frequentation.definitionExpression = filter;
+
+            const isShowingFrequentation = layer_frequentation.visible;
+            layer_location.visible = isShowingFrequentation;
+            layer_frequentation.visible = !isShowingFrequentation;
+            legendExpand.expanded = !isShowingFrequentation;
+          };
+
+          // déclenchement la bascule de visibilité des couches au changement d'état du switch
+          switchbutton.addEventListener("calciteSwitchChange", changeVisibility);
+
+          // ouverture de la fenêtre d'informations
+          infoButton.addEventListener("click", () => {
+            document.getElementById("informations").open = true;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
