@@ -104,6 +104,9 @@ body section .row {
 .card .cover.item-j {
   background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/My-Data-30DayMapChallenge/img/photohypses_miniature.JPG");
 }
+.card .cover.item-k {
+  background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/Parcs-Nationaux/img/national_parks_miniature.JPG");
+}
 .card .cover h1 {
   font-weight: 600;
   position: absolute;
