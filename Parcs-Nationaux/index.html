@@ -44,10 +44,6 @@
             id="yearSlider"
             label-handles
             label-ticks
-            min="1963"
-            max="2025"
-            max-label="2025"
-            value="2019"
             scale="m"></calcite-slider>
         </div>
       </calcite-shell-panel>
@@ -103,11 +99,19 @@
           query.where = "annee_creation IS NOT NULL";
 
           const results = await layer_frequentation.queryFeatures(query);
-          const years = [...new Set(results.features.map((f) => f.attributes.annee_creation))];
-          const difference = Math.max(...years) - Math.min(...years);
+          const years = results.features.map(f => f.attributes.annee_creation);
+          
+          const yearMin = Math.min(...years);
+          const yearMax = Math.max(...years)
+          const difference = yearMax - yearMin;
+          const currentYear = new Date().getFullYear();
 
           yearSlider.labelTicks = true;
           yearSlider.ticks = difference;
+          yearSlider.min = yearMin
+          yearSlider.max = currentYear
+          yearSlider.maxLabel = String(currentYear);
+          yearSlider.value = yearMax
 
           // aimantation aux stops et filtrage dynamique de la couche visible en fonction de la position du slider
           yearSlider.addEventListener("calciteSliderInput", () => {
