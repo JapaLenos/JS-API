@@ -1,0 +1,94 @@
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  
+  <title>2125 | Population</title>
+
+  <link rel="stylesheet" href="style/style.css" />
+
+  <script type="module" src="https://js.arcgis.com/calcite-components/3.3.3/calcite.esm.js"></script>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.34/esri/themes/dark/main.css" />
+  <script src="https://js.arcgis.com/4.34/"></script>
+
+  <script type="module" src="https://js.arcgis.com/4.34/map-components/"></script>
+</head>
+
+<body>
+
+  <div class="titre">
+    <h1>2125</h1>
+    <h3>- POPULATION -</h3>
+  </div>
+  <calcite-shell>
+    <calcite-loader label="Chargement de la carte"></calcite-loader>
+    <arcgis-map item-id="d865e8a38ca446798f2a1da1dc9aba5f" theme="dark">
+      <arcgis-expand slot="bottom-right" expand-tooltip="+ d'infos" collapse-tooltip="Fermer" expand-icon="information">
+        <div class="expand-content" style="padding:1em; max-width:250px;">
+          <h4 style="font-weight: bold; padding-top : 0%; margin-top: 0%">À propos de l'application</h4>
+          <p>En 2125, le monde est partagé entre des populations humaines, IA et hybrides. La répartition de ces populations est représentée sur cette carte.</p>
+          <p>Les données ont été extrapolées à partir du <a href="https://data.humdata.org/dataset/kontur-population-dataset-22km" target="_blank">Kontur Population Dataset de 2023</a>.</p>
+          <p>Retrouvez toutes les étapes de création de l'application dans <a href="https://www.codethemap.fr/2025/11/carte-population-2125.html" target="_blank">cet article CodeTheMap</a>, et toutes mes autres apps sur Github <b>@<a href="https://github.com/JapaLenos" target="_blank">JapaLenos</a></b>.</p>
+          <p>Cette carte a été créée à l'occasion du <b><a href="https://30daymapchallenge.com/" target="_blank">#30DayMapChallenge</a> - Jour 12 : "A Map from 2125"</b></p>
+        </div>
+      </arcgis-expand>
+
+      <arcgis-expand slot="bottom-right" expand-tooltip="Légende" collapse-tooltip="Fermer la légende">
+        <arcgis-legend legend-style="classic"></arcgis-legend>
+      </arcgis-expand>
+    </arcgis-map>
+    <div id="switch-container">
+      <h4>
+        <calcite-switch id="switchbutton" unchecked></calcite-switch>
+        01101101 01101111 01100100 01100101 00100000 01001001 01000001
+
+      </h4>
+    </div>
+
+  </calcite-shell>
+</body>
+<script type="module">
+  customElements.whenDefined("arcgis-map").then(() => {
+    const arcgisMap = document.querySelector("arcgis-map");
+    const loader = document.querySelector("calcite-loader");
+    arcgisMap.addEventListener("arcgisViewReadyChange", async () => {
+      const view = arcgisMap.view;
+      if (!view) return;
+      // Définition du copyright
+      const lyr_pop = arcgisMap.map.layers.at(0);
+      lyr_pop.copyright = "Données de population extrapolées à partir du Kontur Population Dataset 2023 (maille de 22 km)";
+      // Masquer le loader après chargement des couches
+      if (!loader.dataset.hidden) {
+        const layerLoads = view.map.allLayers.map(layer => layer.load());
+        await Promise.all(layerLoads);
+        loader.active = false;
+        loader.style.display = "none";
+      }
+    });
+  });
+  // --- Switch binaire simplifié ---
+  function textToBinaryASCII(str) {
+    return str.split("").map(c => c.charCodeAt(0).toString(2).padStart(8, "0")).join(" ");
+  }
+
+  function numberToBinary(num) {
+    return parseInt(num, 10).toString(2);
+  }
+  const switchButton = document.getElementById("switchbutton");
+  const switchTextNode = switchButton.nextSibling;
+  const h1Node = document.querySelector(".titre h1");
+  const h3Node = document.querySelector(".titre h3");
+  h1Node.setAttribute("data-original", h1Node.textContent);
+  h3Node.setAttribute("data-original", h3Node.textContent);
+  switchButton.addEventListener("calciteSwitchChange", (event) => {
+    const binaryMode = event.target.checked;
+    h1Node.textContent = binaryMode ? numberToBinary(h1Node.getAttribute("data-original")) : h1Node.getAttribute("data-original");
+    h3Node.textContent = binaryMode ? textToBinaryASCII(h3Node.getAttribute("data-original")) : h3Node.getAttribute("data-original");
+    switchTextNode.nodeValue = binaryMode ? " Revenir au mode humain" :
+      " 01101101 01101111 01100100 01100101 00100000 01001001 01000001"; // mode IA
+  });
+</script>
+
+</html>
