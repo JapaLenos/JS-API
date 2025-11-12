@@ -38,15 +38,15 @@
       <arcgis-expand slot="bottom-right" expand-tooltip="Légende" collapse-tooltip="Fermer la légende">
         <arcgis-legend legend-style="classic"></arcgis-legend>
       </arcgis-expand>
-    
-    <div id="switch-container">
-      <h4>
-        <calcite-switch id="switchbutton" unchecked></calcite-switch>
-        01101101 01101111 01100100 01100101 00100000 01001001 01000001
 
-      </h4>
-    </div>
-  </arcgis-map>
+      <div id="switch-container" slot="bottom-left">
+        <h4>
+          <calcite-switch id="switchbutton" unchecked></calcite-switch>
+          01101101 01101111 01100100 01100101 00100000 01001001 01000001
+        </h4>
+      </div>
+    </arcgis-map>
+
   </calcite-shell>
 </body>
 <script type="module">
@@ -56,10 +56,10 @@
     arcgisMap.addEventListener("arcgisViewReadyChange", async () => {
       const view = arcgisMap.view;
       if (!view) return;
-      // Définition du copyright
+
       const lyr_pop = arcgisMap.map.layers.at(0);
       lyr_pop.copyright = "Données de population extrapolées à partir du Kontur Population Dataset 2023 (maille de 22 km)";
-      // Masquer le loader après chargement des couches
+
       if (!loader.dataset.hidden) {
         const layerLoads = view.map.allLayers.map(layer => layer.load());
         await Promise.all(layerLoads);
@@ -91,5 +91,5 @@
   });
 </script>
 
-
 </html>
+
