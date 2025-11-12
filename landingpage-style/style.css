@@ -107,6 +107,9 @@ body section .row {
 .card .cover.item-k {
   background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/Parcs-Nationaux/img/national_parks_miniature.JPG");
 }
+.card .cover.item-l {
+  background-image: url("https://raw.githubusercontent.com/JapaLenos/JS-API/refs/heads/main/2125-30DayMapChallenge/img/screen_2125.jpg");
+}
 .card .cover h1 {
   font-weight: 600;
   position: absolute;
