@@ -1,0 +1,26 @@
+.expand-content {
+  display: none;
+}
+
+arcgis-expand[expanded] .expand-content {
+  display: block;
+}
+  calcite-button:not([calcite-hydrated]) {
+    display: none;
+  }
+.calcite-mode-light {
+  --calcite-color-brand: #e89746;
+  --calcite-color-focus: #e89746;
+  --calcite-color-brand-hover:#c24c25;
+  --calcite-color-brand-press:#5e2e1c;
+}
+
+a {
+  color: #e89746; 
+  text-decoration: underline; 
+}
+
+a:hover {
+  color: #c24c25; 
+  text-decoration: underline;
+}

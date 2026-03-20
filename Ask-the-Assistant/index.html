@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Composants IA SDK JS</title>
+  <link rel="stylesheet" href="style/style.css" />
+  <script type="module" src="https://js.arcgis.com/5.0/"></script>
+  <script src="app/main.js"></script>
+</head>
+
+<body class="calcite-mode-light" lang="fr">
+  <calcite-shell>
+    <arcgis-map id="map" item-id="07341efe8c47428a8caeee89bf16e0d3">
+            <arcgis-expand slot="bottom-left" expand-tooltip="+ d'infos" collapse-tooltip="Fermer" expand-icon="information"> 
+        <div class="expand-content" style="padding:1em; max-width:250px;">
+          <h4 style="font-weight: bold; padding-top : 0%; margin-top: 0%">À propos de l'application</h4>
+          <p>Cette application tire parti <a href="https://developers.arcgis.com/javascript/latest/references/ai-components/" target="_blank">des composants d'IA du SDK JavaScript d'ArcGIS</a> pour proposer une expérience interactive d'exploration des données d'accidents corporels de la circulation routière.</p>
+          <p><a href="https://opendata.hauts-de-seine.fr/explore/dataset/accidents-corporels-de-la-circulation-routiere/information/?disjunctive.cat_route1" target="_blank">Les données</a> ont été produites par le Département des Hauts-de-Seine.</p>
+          <p>Retrouvez toutes les étapes de création de l'application dans <a href="https://www.codethemap.fr/2025/11/carte-population-2125.html" target="_blank">cet article CodeTheMap</a>, et toutes mes autres apps sur Github <b>@<a href="https://github.com/JapaLenos" target="_blank">JapaLenos</a></b>.</p>
+</p>
+        </div>
+      </arcgis-expand>
+      <arcgis-expand slot="bottom-left">
+        <arcgis-layer-list></arcgis-layer-list>
+      </arcgis-expand>
+    </arcgis-map>
+    <calcite-shell-panel slot="panel-end" width="l" id="assistant-panel">
+      <calcite-panel>
+        <arcgis-assistant reference-element="#map">
+          <arcgis-assistant-navigation-agent></arcgis-assistant-navigation-agent>
+          <arcgis-assistant-data-exploration-agent></arcgis-assistant-data-exploration-agent>
+          <arcgis-assistant-help-agent></arcgis-assistant-help-agent>
+            <div slot="footer-content">
+    <calcite-button id="btn_r0" width="full" appearance="outline" icon-start="trash">
+      Réinitialiser la conversation
+    </calcite-button>
+  </div>
+        </arcgis-assistant>
+      </calcite-panel>
+    </calcite-shell-panel>
+  </calcite-shell>
+</body>
+
+</html>
