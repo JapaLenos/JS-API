@@ -23,6 +23,10 @@
         const view = scene.view;
         await view.when();
         view.popupEnabled = false;
+        const [VolumeMeasurementAnalysis, Polygon] = await Promise.all([
+          $arcgis.import("@arcgis/core/analysis/VolumeMeasurementAnalysis.js"),
+          $arcgis.import("@arcgis/core/geometry/Polygon.js")
+        ]);
 
         const slides = view.map.presentation?.slides;
         const list = document.getElementById("slidesList");
@@ -47,6 +51,55 @@
             list.appendChild(item);
           });
         }
+
+        const layerStockpiles = view.map.layers.getItemAt(0);
+        const layerChantier = view.map.layers.getItemAt(3);
+
+        let currentAnalysis = null;
+        let currentFeatureId = null;
+        let currentLayer = null;
+
+        view.on("click", async (event) => {
+          const hit = await view.hitTest(event);
+          const feature = hit.results
+            .map((r) => r.graphic)
+            .filter((g) => g.layer === layerStockpiles || g.layer === layerChantier)[0];
+          if (!feature) return;
+
+          const measureType = feature.layer === layerStockpiles ? "stockpile" : "cut-fill";
+          const clickedId =
+            feature.attributes?.OBJECTID ?? feature.attributes?.objectid ?? feature.attributes?.ObjectID;
+
+          if (currentFeatureId !== null && currentFeatureId === clickedId) {
+            view.analyses.remove(currentAnalysis);
+            currentAnalysis = null;
+            currentFeatureId = null;
+            return;
+          }
+
+          if (currentAnalysis) {
+            view.analyses.remove(currentAnalysis);
+            currentAnalysis = null;
+          }
+
+          const polygon = new Polygon({
+            rings: feature.geometry.rings,
+            spatialReference: feature.geometry.spatialReference
+          });
+
+          currentAnalysis = new VolumeMeasurementAnalysis({
+            geometry: polygon,
+            measureType: measureType,
+            unitOptions: {
+              volumeUnit: "cubic-meters",
+              areaUnit: "square-meters",
+              lengthUnit: "meters"
+            }
+          });
+
+          currentFeatureId = clickedId;
+          view.analyses.add(currentAnalysis);
+        });
       });
     </script>
   </body>
