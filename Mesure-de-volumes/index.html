@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Composants Mesure de volumes</title>
+  <script type="module" src="https://js.arcgis.com/5.0/"></script>
+</head>
+
+<body class="calcite-mode-light" lang="fr">
+  <calcite-shell>
+    <arcgis-scene item-id="e64cfad70d6c4b7cb8432a5d211577ab">
+      <arcgis-volume-measurement id="volumeMeasurement" slot="bottom-left"></arcgis-volume-measurement>
+    </arcgis-scene>
+    <calcite-list id="slidesList"></calcite-list>
+  </calcite-shell>
+
+  <script type="module">
+    import VolumeMeasurementAnalysis from "https://js.arcgis.com/5.0/@arcgis/core/analysis/VolumeMeasurementAnalysis.js";
+
+const scene = document.querySelector("arcgis-scene");
+const volumeMeasurement = document.getElementById("volumeMeasurement");
+
+scene.addEventListener("arcgisViewReadyChange", async () => {
+  const view = scene.view;
+  await view.when();
+
+  const slides = view.map.presentation?.slides;
+  const list = document.getElementById("slidesList");
+
+  if (slides) {
+    slides.forEach((slide) => {
+      const item = document.createElement("calcite-list-item");
+      item.label = slide.title.text;
+      if (slide.description.text) {
+        item.description = slide.description.text;
+      }
+      item.addEventListener("click", () => {
+        slide.applyTo(view, { animate: true, duration: 1500 });
+      });
+      list.appendChild(item);
+    });
+  }
+});
+  </script>
+</body>
+</html>
