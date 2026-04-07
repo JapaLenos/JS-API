@@ -1,47 +1,53 @@
 <!doctype html>
 <html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Composants Mesure de volumes</title>
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Composants Mesure de volumes</title>
-  <script type="module" src="https://js.arcgis.com/5.0/"></script>
-</head>
+  <body class="calcite-mode-light" lang="fr">
+    <calcite-shell>
+      <arcgis-scene item-id="e64cfad70d6c4b7cb8432a5d211577ab">
+        <arcgis-volume-measurement id="volumeMeasurement" slot="bottom-left"></arcgis-volume-measurement>
+      </arcgis-scene>
+      <calcite-list id="slidesList"></calcite-list>
+    </calcite-shell>
 
-<body class="calcite-mode-light" lang="fr">
-  <calcite-shell>
-    <arcgis-scene item-id="e64cfad70d6c4b7cb8432a5d211577ab">
-      <arcgis-volume-measurement id="volumeMeasurement" slot="bottom-left"></arcgis-volume-measurement>
-    </arcgis-scene>
-    <calcite-list id="slidesList"></calcite-list>
-  </calcite-shell>
+    <script type="module">
+      const scene = document.querySelector("arcgis-scene");
+      const volumeMeasurement = document.getElementById("volumeMeasurement");
 
-  <script type="module">
+      scene.addEventListener("arcgisViewReadyChange", async () => {
+        const view = scene.view;
+        await view.when();
+        view.popupEnabled = false;
 
-const scene = document.querySelector("arcgis-scene");
-const volumeMeasurement = document.getElementById("volumeMeasurement");
+        const slides = view.map.presentation?.slides;
+        const list = document.getElementById("slidesList");
 
-scene.addEventListener("arcgisViewReadyChange", async () => {
-  const view = scene.view;
-  await view.when();
-
-  const slides = view.map.presentation?.slides;
-  const list = document.getElementById("slidesList");
-
-  if (slides) {
-    slides.forEach((slide) => {
-      const item = document.createElement("calcite-list-item");
-      item.label = slide.title.text;
-      if (slide.description.text) {
-        item.description = slide.description.text;
-      }
-      item.addEventListener("click", () => {
-        slide.applyTo(view, { animate: true, duration: 1500 });
+        if (slides) {
+          slides.forEach((slide) => {
+            const item = document.createElement("calcite-list-item");
+            item.label = slide.title.text;
+            if (slide.description.text) {
+              item.description = slide.description.text;
+            }
+            if (slide.thumbnail?.url) {
+              const img = document.createElement("img");
+              img.src = slide.thumbnail.url;
+              img.slot = "content-start";
+              img.style.cssText = "width: 64px; height: 40px; object-fit: cover;";
+              item.appendChild(img);
+            }
+            item.addEventListener("click", () => {
+              slide.applyTo(view, { animate: true, duration: 1500 });
+            });
+            list.appendChild(item);
+          });
+        }
       });
-      list.appendChild(item);
-    });
-  }
-});
-  </script>
-</body>
+    </script>
+  </body>
 </html>
