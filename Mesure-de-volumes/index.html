@@ -23,8 +23,7 @@
         const view = scene.view;
         await view.when();
         view.popupEnabled = false;
-        const [VolumeMeasurementAnalysis, Polygon] = await Promise.all([
-          $arcgis.import("@arcgis/core/analysis/VolumeMeasurementAnalysis.js"),
+        const [Polygon] = await Promise.all([
           $arcgis.import("@arcgis/core/geometry/Polygon.js")
         ]);
 
@@ -55,9 +54,7 @@
         const layerStockpiles = view.map.layers.getItemAt(0);
         const layerChantier = view.map.layers.getItemAt(3);
 
-        let currentAnalysis = null;
         let currentFeatureId = null;
-        let currentLayer = null;
 
         view.on("click", async (event) => {
           const hit = await view.hitTest(event);
@@ -71,15 +68,10 @@
             feature.attributes?.OBJECTID ?? feature.attributes?.objectid ?? feature.attributes?.ObjectID;
 
           if (currentFeatureId !== null && currentFeatureId === clickedId) {
-            view.analyses.remove(currentAnalysis);
-            currentAnalysis = null;
+            volumeMeasurement.analysis.geometry = null;
+            volumeMeasurement.analysis.measureType = "cut-fill";
             currentFeatureId = null;
             return;
-          }
-
-          if (currentAnalysis) {
-            view.analyses.remove(currentAnalysis);
-            currentAnalysis = null;
           }
 
           const polygon = new Polygon({
@@ -87,22 +79,12 @@
             spatialReference: feature.geometry.spatialReference
           });
 
-          currentAnalysis = new VolumeMeasurementAnalysis({
-            geometry: polygon,
-            measureType: measureType,
-            unitOptions: {
-              volumeUnit: "cubic-meters",
-              areaUnit: "square-meters",
-              lengthUnit: "meters"
-            }
-          });
-
+          volumeMeasurement.analysis.geometry = polygon;
+          volumeMeasurement.analysis.measureType = measureType;
+          
           currentFeatureId = clickedId;
-          view.analyses.add(currentAnalysis);
-          volumeMeasurement.analysis = currentAnalysis;
         });
       });
     </script>
   </body>
 </html>
-
