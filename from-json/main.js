@@ -17,7 +17,7 @@ const info = new OAuthInfo({
   popup: false // redirection classique, plus fiable
 });
 esriId.registerOAuthInfos([info]);
-
+console.log(esriId.credentials);
 // Force la connexion. Si pas encore connecté, le navigateur redirige vers
 // la page de login ArcGIS puis revient automatiquement sur cette même page.
 await esriId.getCredential(info.portalUrl + "/sharing");
