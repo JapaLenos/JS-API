@@ -1,0 +1,435 @@
+{
+    "operationalLayers": [
+        {
+            "id": "187c3496456-layer-2",
+            "title": "Lignes de Métro et de Tramway",
+            "layers": [
+                {
+                    "id": "187c34abb19-layer-8",
+                    "title": "Tramway",
+                    "visibility": true,
+                    "layers": [
+                        {
+                            "id": "187c349668d-layer-3",
+                            "title": "Lignes de Tramway",
+                            "url": "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/Lignes_de_métro_et_de_Tramway/FeatureServer/3",
+                            "itemId": "780628afa9bb45b194bc754a99b3bb8c",
+                            "layerType": "ArcGISFeatureLayer"
+                        },
+                        {
+                            "id": "187c349668e-layer-4",
+                            "title": "Arrêts de Tramway",
+                            "url": "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/Lignes_de_métro_et_de_Tramway/FeatureServer/2",
+                            "visibility": true,
+                            "itemId": "780628afa9bb45b194bc754a99b3bb8c",
+                            "layerType": "ArcGISFeatureLayer",
+                            "showLabels": false,
+                            "layerDefinition": {
+                                "drawingInfo": {
+                                    "labelingInfo": [
+                                        {
+                                            "labelExpression": "[OBJECTID]",
+                                            "labelExpressionInfo": {
+                                                "expression": "$feature[\"OBJECTID\"]"
+                                            },
+                                            "labelPlacement": "esriServerPointLabelPlacementAboveCenter",
+                                            "repeatLabel": true,
+                                            "symbol": {
+                                                "type": "esriTS",
+                                                "color": [
+                                                    105,
+                                                    105,
+                                                    105,
+                                                    255
+                                                ],
+                                                "font": {
+                                                    "family": "Arial",
+                                                    "size": 9.75
+                                                },
+                                                "horizontalAlignment": "center",
+                                                "kerning": true,
+                                                "haloColor": [
+                                                    211,
+                                                    211,
+                                                    211,
+                                                    255
+                                                ],
+                                                "haloSize": 1,
+                                                "rotated": false,
+                                                "text": "",
+                                                "verticalAlignment": "baseline",
+                                                "xoffset": 0,
+                                                "yoffset": 0,
+                                                "angle": 0
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "layerType": "GroupLayer"
+                },
+                {
+                    "id": "187c349ff64-layer-7",
+                    "title": "Métro",
+                    "visibility": true,
+                    "layers": [
+                        {
+                            "id": "187c349668f-layer-5",
+                            "title": "Lignes de Métro",
+                            "url": "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/Lignes_de_métro_et_de_Tramway/FeatureServer/1",
+                            "itemId": "780628afa9bb45b194bc754a99b3bb8c",
+                            "layerType": "ArcGISFeatureLayer",
+                            "layerDefinition": {
+                                "drawingInfo": {
+                                    "renderer": {
+                                        "type": "uniqueValue",
+                                        "visualVariables": [
+                                            {
+                                                "type": "sizeInfo",
+                                                "valueExpression": "$view.scale",
+                                                "stops": [
+                                                    {
+                                                        "size": 12,
+                                                        "value": 9027.977411
+                                                    },
+                                                    {
+                                                        "size": 6,
+                                                        "value": 72223.819286
+                                                    },
+                                                    {
+                                                        "size": 4.5,
+                                                        "value": 577790.554289
+                                                    },
+                                                    {
+                                                        "size": 3,
+                                                        "value": 4622324.434309
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "field1": "ligne",
+                                        "drawInClassOrder": true,
+                                        "uniqueValueGroups": [
+                                            {
+                                                "classes": [
+                                                    {
+                                                        "label": "A",
+                                                        "symbol": {
+                                                            "type": "esriSLS",
+                                                            "color": [
+                                                                237,
+                                                                81,
+                                                                81,
+                                                                255
+                                                            ],
+                                                            "width": 6,
+                                                            "style": "esriSLSSolid"
+                                                        },
+                                                        "values": [
+                                                            [
+                                                                "A"
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "label": "B",
+                                                        "symbol": {
+                                                            "type": "esriSLS",
+                                                            "color": [
+                                                                20,
+                                                                158,
+                                                                206,
+                                                                255
+                                                            ],
+                                                            "width": 6,
+                                                            "style": "esriSLSSolid"
+                                                        },
+                                                        "values": [
+                                                            [
+                                                                "B"
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "label": "C",
+                                                        "symbol": {
+                                                            "type": "esriSLS",
+                                                            "color": [
+                                                                255,
+                                                                212,
+                                                                59,
+                                                                255
+                                                            ],
+                                                            "width": 6,
+                                                            "style": "esriSLSSolid"
+                                                        },
+                                                        "values": [
+                                                            [
+                                                                "C"
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "label": "D",
+                                                        "symbol": {
+                                                            "type": "esriSLS",
+                                                            "color": [
+                                                                29,
+                                                                143,
+                                                                46,
+                                                                255
+                                                            ],
+                                                            "width": 6,
+                                                            "style": "esriSLSSolid"
+                                                        },
+                                                        "values": [
+                                                            [
+                                                                "D"
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "label": "F1",
+                                                        "symbol": {
+                                                            "type": "esriSLS",
+                                                            "color": [
+                                                                167,
+                                                                198,
+                                                                54,
+                                                                255
+                                                            ],
+                                                            "width": 6,
+                                                            "style": "esriSLSSolid"
+                                                        },
+                                                        "values": [
+                                                            [
+                                                                "F1"
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "label": "F2",
+                                                        "symbol": {
+                                                            "type": "esriSLS",
+                                                            "color": [
+                                                                167,
+                                                                198,
+                                                                54,
+                                                                255
+                                                            ],
+                                                            "width": 6,
+                                                            "style": "esriSLSSolid"
+                                                        },
+                                                        "values": [
+                                                            [
+                                                                "F2"
+                                                            ]
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "uniqueValueInfos": [
+                                            {
+                                                "label": "A",
+                                                "symbol": {
+                                                    "type": "esriSLS",
+                                                    "color": [
+                                                        237,
+                                                        81,
+                                                        81,
+                                                        255
+                                                    ],
+                                                    "width": 6,
+                                                    "style": "esriSLSSolid"
+                                                },
+                                                "value": "A"
+                                            },
+                                            {
+                                                "label": "B",
+                                                "symbol": {
+                                                    "type": "esriSLS",
+                                                    "color": [
+                                                        20,
+                                                        158,
+                                                        206,
+                                                        255
+                                                    ],
+                                                    "width": 6,
+                                                    "style": "esriSLSSolid"
+                                                },
+                                                "value": "B"
+                                            },
+                                            {
+                                                "label": "C",
+                                                "symbol": {
+                                                    "type": "esriSLS",
+                                                    "color": [
+                                                        255,
+                                                        212,
+                                                        59,
+                                                        255
+                                                    ],
+                                                    "width": 6,
+                                                    "style": "esriSLSSolid"
+                                                },
+                                                "value": "C"
+                                            },
+                                            {
+                                                "label": "D",
+                                                "symbol": {
+                                                    "type": "esriSLS",
+                                                    "color": [
+                                                        29,
+                                                        143,
+                                                        46,
+                                                        255
+                                                    ],
+                                                    "width": 6,
+                                                    "style": "esriSLSSolid"
+                                                },
+                                                "value": "D"
+                                            },
+                                            {
+                                                "label": "F1",
+                                                "symbol": {
+                                                    "type": "esriSLS",
+                                                    "color": [
+                                                        167,
+                                                        198,
+                                                        54,
+                                                        255
+                                                    ],
+                                                    "width": 6,
+                                                    "style": "esriSLSSolid"
+                                                },
+                                                "value": "F1"
+                                            },
+                                            {
+                                                "label": "F2",
+                                                "symbol": {
+                                                    "type": "esriSLS",
+                                                    "color": [
+                                                        167,
+                                                        198,
+                                                        54,
+                                                        255
+                                                    ],
+                                                    "width": 6,
+                                                    "style": "esriSLSSolid"
+                                                },
+                                                "value": "F2"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": "187c3496690-layer-6",
+                            "title": "Arrêts de Métro",
+                            "url": "https://services.arcgis.com/d3voDfTFbHOCRwVR/arcgis/rest/services/Lignes_de_métro_et_de_Tramway/FeatureServer/0",
+                            "itemId": "780628afa9bb45b194bc754a99b3bb8c",
+                            "layerType": "ArcGISFeatureLayer",
+                            "featureEffect": null,
+                            "layerDefinition": {
+                                "definitionExpression": null,
+                                "drawingInfo": {
+                                    "labelingInfo": [
+                                        {
+                                            "labelExpression": "[nom]",
+                                            "labelExpressionInfo": {
+                                                "expression": "$feature[\"nom\"]"
+                                            },
+                                            "labelPlacement": "esriServerPointLabelPlacementAboveCenter",
+                                            "maxScale": 0,
+                                            "minScale": 68802.091876,
+                                            "repeatLabel": true,
+                                            "symbol": {
+                                                "type": "esriTS",
+                                                "color": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    255
+                                                ],
+                                                "font": {
+                                                    "family": "Avenir Next LT Pro Medium",
+                                                    "size": 9.75,
+                                                    "weight": "bold"
+                                                },
+                                                "horizontalAlignment": "center",
+                                                "kerning": true,
+                                                "haloColor": [
+                                                    255,
+                                                    255,
+                                                    255,
+                                                    255
+                                                ],
+                                                "haloSize": 1.5,
+                                                "rotated": false,
+                                                "text": "",
+                                                "verticalAlignment": "baseline",
+                                                "xoffset": 0,
+                                                "yoffset": 0,
+                                                "angle": 0
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "showLabels": true
+                        }
+                    ],
+                    "layerType": "GroupLayer"
+                }
+            ],
+            "layerType": "GroupLayer"
+        }
+    ],
+    "baseMap": {
+        "baseMapLayers": [
+            {
+                "id": "VectorTile_1970",
+                "opacity": 1,
+                "title": "Base gris clair",
+                "visibility": true,
+                "layerType": "VectorTileLayer",
+                "styleUrl": "https://cdn.arcgis.com/sharing/rest/content/items/d0379d966042485a86b33ea5b0ddbeec/resources/styles/root.json"
+            },
+            {
+                "id": "VectorTile_7117",
+                "opacity": 1,
+                "title": "Light Gray Reference",
+                "visibility": true,
+                "layerType": "VectorTileLayer",
+                "styleUrl": "https://cdn.arcgis.com/sharing/rest/content/items/cd8fb0c6d1594922aff21b1540b70ea8/resources/styles/root.json",
+                "isReference": true
+            }
+        ],
+        "title": "Nuances de gris"
+    },
+    "authoringApp": "ArcGISMapViewer",
+    "authoringAppVersion": "2023.1",
+    "initialState": {
+        "viewpoint": {
+            "targetGeometry": {
+                "spatialReference": {
+                    "latestWkid": 3857,
+                    "wkid": 102100
+                },
+                "xmin": 533323.806181187,
+                "ymin": 5731846.128992654,
+                "xmax": 549069.8340079121,
+                "ymax": 5746732.240251172
+            }
+        }
+    },
+    "spatialReference": {
+        "latestWkid": 3857,
+        "wkid": 102100
+    },
+    "version": "2.27"
+}
